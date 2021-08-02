@@ -7,13 +7,19 @@ const { request } = require('http')
 
 const app = express()
 
+//файлы ejs по умолчанию
+app.set('view engine', 'ejs')
+
+//укажем ститические файлы(напр чтобы подключить css)
+app.use(express.static('public'))
+
 app.get('/', (request, response) => {
-  response.end('Hello from NodeJS')
+  response.render('index')
 })
 
-app.get('/about', (request, response) => {
-  response.end('about page')
-})
+// app.get('/about', (request, response) => {
+//   response.end('about page')
+// })
 
 //port 3000, callback
 app.listen(3000, () => {
