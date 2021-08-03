@@ -19,7 +19,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extends: true }))
 
 app.get('/', (request, response) => {
-  response.render('index')
+  response.render('index', { weather: null, error: null })
 })
 
 // app.get('/about', (request, response) => {
@@ -34,7 +34,7 @@ app.post('/', async (request, response) => {
   console.log('Weather: ', weather)
   console.log('Error: ', error)
 
-  response.render('index')
+  response.render('index', { weather, error })
 })
 
 //port 3000, callback

@@ -26,13 +26,14 @@ module.exports = async function (city = '') {
     console.log(data)
 
     return {
-      weather: `${data.name}, ${data.main.temp}, ${data.weather[0].icon}`,
+      weather: `${data.name}: ${data.main.temp.toFixed(1)} °C`,
       error: null,
     }
   } catch (error) {
+    console.log("EEerror: ", error)
     return {
       weather: null,
-      error: error.error.messsage,
+      error: error.error.message,
     }
   }
 }
