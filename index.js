@@ -1,9 +1,13 @@
 //создаем простой сервер на nodejs
 
+//api key 3a7f5ac07520aa2feac726b007a9eaf4 from openweathermap
+
 //подключаю пакет express в скрипт
 const { response } = require('express')
 const express = require('express')
 const { request } = require('http')
+
+const weatehrRequest = require('./requests/request.weather')
 
 const bodyParser = require('body-parser')
 
@@ -25,9 +29,10 @@ app.get('/', (request, response) => {
 // })
 
 app.post('/', (request, response) => {
-  console.log(request.body)
   const { city } = request.body
-  console.log(city)
+
+  weatehrRequest(city)
+
   response.render('index')
 })
 
